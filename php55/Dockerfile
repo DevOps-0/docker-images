@@ -7,7 +7,6 @@ RUN echo "deb http://packages.dotdeb.org wheezy-php55 all" > /etc/apt/sources.li
 RUN echo "deb-src http://packages.dotdeb.org wheezy-php55 all" >> /etc/apt/sources.list.d/php.list
 
 #update apt-get with the new repo
-RUN apt-get update
 #get the public key from the repo
 wget http://www.dotdeb.org/dotdeb.gpg
 sudo apt-key add dotdeb.gpg
