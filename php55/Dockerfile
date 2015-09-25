@@ -8,8 +8,8 @@ RUN echo "deb-src http://packages.dotdeb.org wheezy-php55 all" >> /etc/apt/sourc
 
 #update apt-get with the new repo
 #get the public key from the repo
-wget http://www.dotdeb.org/dotdeb.gpg
-sudo apt-key add dotdeb.gpg
+RUN wget http://www.dotdeb.org/dotdeb.gpg
+RUN apt-key add dotdeb.gpg
 RUN apt-get update
 
 #install php5.5
