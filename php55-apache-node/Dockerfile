@@ -9,7 +9,6 @@ RUN echo 'deb-src https://deb.nodesource.com/node wheezy main' >> /etc/apt/sourc
 RUN apt-get install -y apt-transport-https
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN apt-get update
-RUN service apache2 restart
 RUN apt-get install nodejs npm -qq -u -y
 RUN mkdir -p /home/profideo/.npm
 RUN chown -R profideo /home/profideo/.npm
