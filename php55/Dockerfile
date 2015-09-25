@@ -13,7 +13,7 @@ RUN apt-key add dotdeb.gpg
 RUN apt-get update
 
 #install php5.5
-RUN apt-get install -y php-apc php-http php-http-request php-net-socket php-net-url php-pear php5-cli php5-common php5-curl php5-dev php5-gd php5-intl php5-ldap php5-mcrypt php5-mysql php5-xsl
+RUN apt-get install -y php-http php-http-request php-net-socket php-net-url php-pear php5-cli php5-common php5-curl php5-dev php5-gd php5-intl php5-ldap php5-mcrypt php5-mysql php5-xsl
 
 # Install PHP HttpRequest
 RUN apt-get install -y libcurl4-openssl-dev make
