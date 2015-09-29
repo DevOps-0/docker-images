@@ -15,4 +15,4 @@ RUN chown -R profideo:profideo /home/profideo/.npm
 RUN npm install -g less
 RUN npm install -g bower
 RUN npm cache clean
-
+RUN npm update -g
