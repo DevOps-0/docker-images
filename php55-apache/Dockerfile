@@ -19,7 +19,7 @@ RUN /etc/init.d/mysql restart
 RUN a2enmod rewrite
 RUN echo "umask 002" >> /etc/apache2/envvars
 RUN a2enmod php5
-RUN service apache2 restart
+#RUN service apache2 restart
 # Add user profideo to group www-data
 RUN usermod -a -G www-data profideo
 
