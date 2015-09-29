@@ -11,8 +11,8 @@ RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN apt-get update
 RUN apt-get install nodejs npm -qq -u -y
 RUN mkdir -p /home/profideo/.npm
-RUN chown -R profideo /home/profideo/.npm
+RUN chown -R profideo:profideo /home/profideo/.npm
 RUN npm install -g less
 RUN npm install -g bower
-
+RUN npm cache clean
 
