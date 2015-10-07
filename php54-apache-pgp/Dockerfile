@@ -6,7 +6,6 @@ RUN echo 'deb http://ftp.debian.org/debian/ wheezy-backports main' > /etc/apt/so
 RUN apt-get update
 RUN apt-get -t wheezy-backports install libreoffice -qq -u -y
 
-RUN apt-get install unoconv -qq -u -y 
 RUN apt-get install bzip2 -qq -u -y 
 
 # Install client php mongodb
