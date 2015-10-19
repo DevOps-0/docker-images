@@ -10,7 +10,7 @@ RUN apt-get install -y apt-transport-https
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN apt-get update
 RUN apt-get install memcached -qq -u -y
-RUN apt-get install php5-memcached -qq -u -y
+RUN apt-get install php5-memcache -qq -u -y
 RUN service apache2 restart
 RUN apt-get install nodejs npm -qq -u -y
 RUN mkdir -p /home/profideo/.npm
