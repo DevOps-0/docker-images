@@ -19,4 +19,7 @@ RUN echo "umask 002" >> /etc/apache2/envvars
 # Add user profideo to group www-data
 RUN usermod -a -G www-data profideo
 
+# Install nslookup (use in comparateur)
+RUN apt-get install dnsutils
+
 EXPOSE 80
