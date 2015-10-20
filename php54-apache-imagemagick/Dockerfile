@@ -20,6 +20,6 @@ RUN echo "umask 002" >> /etc/apache2/envvars
 RUN usermod -a -G www-data profideo
 
 # Install nslookup (use in comparateur)
-RUN apt-get install dnsutils
+RUN apt-get install -y dnsutils
 
 EXPOSE 80
