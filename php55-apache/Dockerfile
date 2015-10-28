@@ -17,7 +17,6 @@ RUN apt-get install mysql-server -qq -u -y
 RUN apt-get install mysql-client -qq -u -y
 RUN /etc/init.d/mysql restart
 RUN a2enmod rewrite
-RUN chown www-data:www-data /var/lock/apache2 -R 
 RUN echo "umask 002" >> /etc/apache2/envvars
 RUN a2enmod php5
 RUN service apache2 restart
