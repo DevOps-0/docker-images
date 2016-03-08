@@ -22,4 +22,7 @@ RUN usermod -a -G www-data profideo
 # Install nslookup (use in comparateur)
 RUN apt-get install -y dnsutils
 
+# Install imagemagick
+RUN apt-get install -y imagemagick
+
 EXPOSE 80
