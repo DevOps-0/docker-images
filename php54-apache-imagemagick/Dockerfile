@@ -24,5 +24,7 @@ RUN apt-get install -y dnsutils
 
 # Install imagemagick
 RUN apt-get install -y imagemagick
+RUN apt-get -y install php5-imagick
+RUN test -e '/etc/init.d/apache2' && command service 'apache2' 'force-reload'
 
 EXPOSE 80
