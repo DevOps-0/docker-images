@@ -14,8 +14,8 @@ RUN apt-get install -y php-http php-http-request php-net-socket php-net-url php-
 
 # Install PHP HttpRequest
 RUN apt-get install -y libcurl4-openssl-dev make
-RUN echo "\n"|pecl install pecl_http-1.7.6
-RUN echo "extension=http.so" > /etc/php5/conf.d/20-http.ini
+#RUN echo "\n"|pecl install pecl_http-1.7.6
+#RUN echo "extension=http.so" > /etc/php5/conf.d/20-http.ini
 
 # Install PHP OLE for obsExcel
 RUN pear install channel://pear.php.net/OLE-1.0.0RC2
