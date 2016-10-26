@@ -193,10 +193,6 @@ RUN apt-get -t jessie-backports install libreoffice -qq -u -y
 RUN apt-get install bzip2 -qq -u -y
 
 # Install imagemagick
-RUN apt-get -y install php5-imagick
-RUN test -e '/etc/init.d/apache2' && command service 'apache2' 'force-reload'
-
-# Install imagemagick
 RUN apt-get install -y imagemagick
 RUN apt-get install -y librsvg2-2 librsvg2-bin librsvg2-dbg
 RUN apt-get install -y libmagickcore5 libmagickcore5-extra
