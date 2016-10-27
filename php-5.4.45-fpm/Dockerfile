@@ -1,4 +1,5 @@
 FROM profideo/apache-2.4.10
+# COPY FROM php:5.6.11-fpm
 
 # persistent / runtime deps
 ENV PHPIZE_DEPS \
@@ -150,7 +151,7 @@ RUN set -ex \
 	} | tee php-fpm.d/zz-docker.conf
 
 ##<overload by profideo>##
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
 		php-http \
         php-http-request \
         php-net-socket \
@@ -167,50 +168,6 @@ RUN apt-get update && apt-get install -y \
         php5-mysql \
         php5-xsl \
         libapache2-mod-fastcgi
-
-# Install PHP HttpRequest
-RUN apt-get install -y libcurl4-openssl-dev make
-RUN echo "\n"|pecl install pecl_http-1.7.6
-RUN echo "extension=http.so" > /etc/php5/conf.d/20-http.ini
-
-# @see https://github.com/joyent/node/wiki/installing-node.js-via-package-manager
-# @see https://deb.nodesource.com/setup
-RUN echo 'deb https://deb.nodesource.com/node jessie main' > /etc/apt/sources.list.d/nodesource.list
-RUN echo 'deb-src https://deb.nodesource.com/node jessie main' >> /etc/apt/sources.list.d/nodesource.list
-RUN apt-get install -y apt-transport-https
-RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
-RUN apt-get update
-RUN apt-get install nodejs nodejs-dev npm -qq -u -y
-RUN mkdir -p /home/profideo/.npm
-RUN chown -R profideo /home/profideo/.npm
-RUN npm install -g less
-RUN npm install -g bower
-RUN npm cache clean
-RUN npm update -g
-
-RUN echo 'deb http://ftp.debian.org/debian/ jessie-backports main' > /etc/apt/sources.list.d/libreoffice.list
-RUN apt-get update
-RUN apt-get -t jessie-backports install libreoffice -qq -u -y
-RUN apt-get install bzip2 -qq -u -y
-
-# Install imagemagick
-RUN apt-get install -y imagemagick
-RUN apt-get install -y librsvg2-2 librsvg2-bin librsvg2-dbg
-RUN apt-get install -y libmagickcore5 libmagickcore5-extra
-RUN apt-get -y install php5-imagick
-RUN test -e '/etc/init.d/apache2' && command service 'apache2' 'force-reload'
-COPY ./files/achillefy-regular_l-webfont.ttf /usr/share/fonts/achillefy-regular_l-webfont.ttf
-COPY ./files/type-achille.xml /etc/ImageMagick/type-achille.xml
-COPY ./files/type.xml /etc/ImageMagick/type.xml
-
-# Install client php mongodb
-RUN apt-get -t jessie-backports install php5-mongo -qq -u -y
-
-# Install nslookup (use in comparateur)
-RUN apt-get install -y dnsutils
-
-# Install PHP OLE for obsExcel
-RUN pear install channel://pear.php.net/OLE-1.0.0RC2
 ##</overload by profideo>##
 
 EXPOSE 9000
