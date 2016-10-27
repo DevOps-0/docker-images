@@ -151,7 +151,7 @@ RUN set -ex \
 	} | tee php-fpm.d/zz-docker.conf
 
 ##<overload by profideo>##
-RUN apt-get install -y \
+RUN apt-get update && apt-get install -y \
 		php-http \
         php-http-request \
         php-net-socket \
