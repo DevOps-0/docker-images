@@ -175,12 +175,12 @@ RUN echo "extension=http.so" > /etc/php5/conf.d/20-http.ini
 
 # @see https://github.com/joyent/node/wiki/installing-node.js-via-package-manager
 # @see https://deb.nodesource.com/setup
-RUN echo 'deb https://deb.nodesource.com/node wheezy main' > /etc/apt/sources.list.d/nodesource.list
-RUN echo 'deb-src https://deb.nodesource.com/node wheezy main' >> /etc/apt/sources.list.d/nodesource.list
+RUN echo 'deb https://deb.nodesource.com/node jessie main' > /etc/apt/sources.list.d/nodesource.list
+RUN echo 'deb-src https://deb.nodesource.com/node jessie main' >> /etc/apt/sources.list.d/nodesource.list
 RUN apt-get install -y apt-transport-https
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN apt-get update
-RUN apt-get install nodejs-dev=0.10.29~dfsg-2_amd64 npm=1.4.21+ds-2_all -qq -u -y
+RUN apt-get install nodejs nodejs-dev npm -qq -u -y
 RUN mkdir -p /home/profideo/.npm
 RUN chown -R profideo /home/profideo/.npm
 RUN npm install -g less
