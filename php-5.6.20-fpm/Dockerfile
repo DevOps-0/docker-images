@@ -168,6 +168,10 @@ RUN apt-get update && apt-get install -y \
         php5-mysql \
         php5-xsl \
         libapache2-mod-fastcgi
+RUN apt-get install -qq -u -y \
+        mysql-server \
+        mysql-client
+RUN /etc/init.d/mysql restart
 ##</overload by profideo>##
 
 EXPOSE 9000
