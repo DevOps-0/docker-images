@@ -49,7 +49,6 @@ RUN buildDeps=" \
 		--disable-cgi \
 		--enable-mysqlnd \
 		--enable-mbstring \
-		--with-gd \
 		--with-curl \
 		--with-openssl \
 		--with-readline \
@@ -69,6 +68,7 @@ COPY php-fpm.conf /usr/local/etc/
 
 ##<overload by profideo>##
 RUN apt-get update && apt-get install -y \
+        libpng-dev \ # for extention gd
 		php-http \
         php-http-request \
         php-net-socket \
@@ -85,6 +85,8 @@ RUN apt-get update && apt-get install -y \
         php5-mysql \
         php5-xsl \
         libapache2-mod-fastcgi
+RUN /usr/local/bin/docker-php-ext-install gd
+RUN /usr/local/bin/docker-php-ext-enable gd
 RUN apt-get install -qq -u -y \
         mysql-server \
         mysql-client

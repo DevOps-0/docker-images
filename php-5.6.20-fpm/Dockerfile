@@ -99,7 +99,6 @@ RUN set -xe \
 		--with-libedit \
 		--with-openssl \
 		--with-zlib \
-		--with-gd \
 		\
 		$PHP_EXTRA_CONFIGURE_ARGS \
 	&& make -j "$(nproc)" \
@@ -153,6 +152,7 @@ RUN set -ex \
 
 ##<overload by profideo>##
 RUN apt-get update && apt-get install -y \
+        libpng-dev \ # for extention gd
 		php-http \
         php-http-request \
         php-net-socket \
@@ -169,6 +169,8 @@ RUN apt-get update && apt-get install -y \
         php5-mysql \
         php5-xsl \
         libapache2-mod-fastcgi
+RUN /usr/local/bin/docker-php-ext-install gd
+RUN /usr/local/bin/docker-php-ext-enable gd
 RUN apt-get install -qq -u -y \
         mysql-server \
         mysql-client
