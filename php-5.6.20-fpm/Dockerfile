@@ -151,8 +151,9 @@ RUN set -ex \
 	} | tee php-fpm.d/zz-docker.conf
 
 ##<overload by profideo>##
+# paquet libpng-dev for php extention gd
 RUN apt-get update && apt-get install -y \
-        libpng-dev \ # for extention gd
+        libpng-dev \
 		php-http \
         php-http-request \
         php-net-socket \
