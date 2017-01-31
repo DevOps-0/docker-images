@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /root
 
 RUN apt-get update
-RUN apt-get install -y acl vim wget curl git subversion acl htop
+RUN apt-get install -y acl vim wget curl git subversion htop
 RUN apt-get install -y zip
 
 # install ssh
