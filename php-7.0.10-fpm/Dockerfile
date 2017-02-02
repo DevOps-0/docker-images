@@ -130,6 +130,10 @@ RUN set -ex \
 	} | tee php-fpm.d/zz-docker.conf
 
 ##<overload by profideo>##
+RUN /usr/local/bin/docker-php-ext-install \
+        zip
+RUN /usr/local/bin/docker-php-ext-enable \
+        zip
 RUN apt-get install -qq -u -y \
         mysql-server \
         mysql-client

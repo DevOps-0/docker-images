@@ -88,10 +88,12 @@ RUN apt-get update && apt-get install -y \
         libapache2-mod-fastcgi
 RUN /usr/local/bin/docker-php-ext-install \
         gd \
-        mysql
+        mysql \
+        zip
 RUN /usr/local/bin/docker-php-ext-enable \
         gd \
-        mysql
+        mysql \
+        zip
 RUN apt-get install -qq -u -y \
         mysql-server \
         mysql-client
