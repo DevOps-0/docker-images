@@ -19,6 +19,14 @@ RUN mkdir -p /root/.ssh
 RUN apt-get install -y supervisor
 RUN mkdir -p /var/run/sshd /var/log/supervisor
 
+# Set locale
+RUN apt-get -qqy install locales
+RUN sed -i 's/# fr_FR.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen
+RUN /usr/sbin/locale-gen
+ENV LANG fr_FR.UTF-8
+ENV LANGUAGE fr_FR:fr
+ENV LC_ALL fr_FR.UTF-8
+
 # Add Profideo user for deployment - force uid to 1000 as it is the profideo uid on host (mapping necessary for nice rights sharing)
 RUN useradd --system --uid=1000 -s /bin/bash -m -d /home/profideo profideo
 RUN echo 'profideo:profideo' | chpasswd
