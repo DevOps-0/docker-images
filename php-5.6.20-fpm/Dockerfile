@@ -153,6 +153,7 @@ RUN set -ex \
 ##<overload by profideo>##
 # paquet libpng-dev for php extention gd
 RUN apt-get update && apt-get install -y \
+        wget \
         libpng-dev \
 		php-http \
         php-http-request \
