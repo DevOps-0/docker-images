@@ -174,11 +174,13 @@ RUN apt-get update && apt-get install -y \
 RUN /usr/local/bin/docker-php-ext-install \
         gd \
         mysql \
-        zip
+        zip \
+        pdo_mysql
 RUN /usr/local/bin/docker-php-ext-enable \
         gd \
         mysql \
-        zip
+        zip \
+        pdo_mysql
 RUN apt-get install -qq -u -y \
         mysql-server \
         mysql-client
