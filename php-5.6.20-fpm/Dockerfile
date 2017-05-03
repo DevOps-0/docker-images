@@ -151,6 +151,9 @@ RUN set -ex \
 	} | tee php-fpm.d/zz-docker.conf
 
 ##<overload by profideo>##
+RUN a2enmod proxy
+RUN a2enmod proxy_fcgi
+
 # paquet libpng-dev for php extention gd
 RUN apt-get update && apt-get install -y \
         wget \
