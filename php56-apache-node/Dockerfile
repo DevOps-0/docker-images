@@ -2,10 +2,6 @@ FROM profideo/php-5.6.20-fpm:22323-set-php-fpm
 
 MAINTAINER Alban Duval <aduval@profideo.com>
 
-# @see https://github.com/joyent/node/wiki/installing-node.js-via-package-manager
-# @see https://deb.nodesource.com/setup
-RUN echo 'deb https://deb.nodesource.com/node wheezy main' > /etc/apt/sources.list.d/nodesource.list
-RUN echo 'deb-src https://deb.nodesource.com/node wheezy main' >> /etc/apt/sources.list.d/nodesource.list
 RUN apt-get install -y apt-transport-https
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN apt-get update
