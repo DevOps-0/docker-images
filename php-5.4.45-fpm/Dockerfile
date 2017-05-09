@@ -67,6 +67,9 @@ WORKDIR /var/www/html
 COPY php-fpm.conf /usr/local/etc/
 
 ##<overload by profideo>##
+RUN a2enmod proxy
+RUN a2enmod proxy_fcgi
+
 # paquet libpng-dev for php extention gd
 RUN apt-get update && apt-get install -y \
         libpng-dev \
