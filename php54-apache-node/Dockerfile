@@ -3,7 +3,7 @@ FROM profideo/php-5.4.45-fpm:22323-set-php-fpm
 MAINTAINER Alban Duval <aduval@profideo.com>
 
 RUN apt-get install -y apt-transport-https
-RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get update
 RUN apt-get install memcached -qq -u -y
 RUN apt-get install php5-memcache -qq -u -y
