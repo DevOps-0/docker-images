@@ -1,10 +1,9 @@
-FROM profideo/php54-apache-node
+FROM profideo/php54-apache-node:22323-set-php-fpm
 
 MAINTAINER Alban Duval <aduval@profideo.com>
 
-RUN echo 'deb http://ftp.debian.org/debian/ wheezy-backports main' > /etc/apt/sources.list.d/libreoffice.list
 RUN apt-get update
-RUN apt-get -t wheezy-backports install libreoffice -qq -u -y
+RUN apt-get install libreoffice -qq -u -y
 
 RUN apt-get install bzip2 -qq -u -y 
 
