@@ -15,6 +15,5 @@ RUN apt-get install -y dnsutils
 
 # Install imagemagick
 RUN apt-get install -y imagemagick
-RUN apt-get -y install php5-imagick
 
 EXPOSE 80
