@@ -1,4 +1,4 @@
-FROM profideo/php-5.4.45-fpm:22323-set-php-fpm
+FROM profideo/php-5.4.45-fpm
 
 MAINTAINER Alban Duval <aduval@profideo.com>
 
