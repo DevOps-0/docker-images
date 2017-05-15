@@ -151,8 +151,12 @@ RUN set -ex \
 	} | tee php-fpm.d/zz-docker.conf
 
 ##<overload by profideo>##
+RUN a2enmod proxy
+RUN a2enmod proxy_fcgi
+
 # paquet libpng-dev for php extention gd
 RUN apt-get update && apt-get install -y \
+        wget \
         libpng-dev \
 		php-http \
         php-http-request \
@@ -173,11 +177,13 @@ RUN apt-get update && apt-get install -y \
 RUN /usr/local/bin/docker-php-ext-install \
         gd \
         mysql \
-        zip
+        zip \
+        pdo_mysql
 RUN /usr/local/bin/docker-php-ext-enable \
         gd \
         mysql \
-        zip
+        zip \
+        pdo_mysql
 RUN apt-get install -qq -u -y \
         mysql-server \
         mysql-client

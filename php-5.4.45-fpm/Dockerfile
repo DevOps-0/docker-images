@@ -67,6 +67,14 @@ WORKDIR /var/www/html
 COPY php-fpm.conf /usr/local/etc/
 
 ##<overload by profideo>##
+RUN a2enmod proxy
+RUN a2enmod proxy_fcgi
+
+# Install PHP HttpRequest
+RUN apt-get update && apt-get install -y libcurl4-openssl-dev make zlib1g-dev
+RUN echo "\n"|pecl install pecl_http-1.7.6
+RUN /usr/local/bin/docker-php-ext-enable http
+
 # paquet libpng-dev for php extention gd
 RUN apt-get update && apt-get install -y \
         libpng-dev \
@@ -89,11 +97,14 @@ RUN apt-get update && apt-get install -y \
 RUN /usr/local/bin/docker-php-ext-install \
         gd \
         mysql \
-        zip
+        zip \
+        pdo_mysql
 RUN /usr/local/bin/docker-php-ext-enable \
         gd \
         mysql \
-        zip
+        zip \
+        pdo_mysql \
+        http
 RUN apt-get install -qq -u -y \
         mysql-server \
         mysql-client
