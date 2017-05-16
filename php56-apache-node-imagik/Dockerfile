@@ -6,4 +6,6 @@ MAINTAINER Alban Duval <aduval@profideo.com>
 RUN apt-get update
 
 # Install imagemagick
-RUN apt-get -y install php5-imagick
+RUN apt-get install -y libmagickwand-dev
+RUN pecl install imagick
+RUN /usr/local/bin/docker-php-ext-enable imagick
