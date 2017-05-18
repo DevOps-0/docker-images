@@ -49,6 +49,7 @@ RUN buildDeps=" \
 		--disable-cgi \
 		--enable-mysqlnd \
 		--enable-mbstring \
+		--enable-bcmath \
 		--with-curl \
 		--with-openssl \
 		--with-readline \
