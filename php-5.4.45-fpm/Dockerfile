@@ -76,6 +76,11 @@ RUN apt-get update && apt-get install -y libcurl4-openssl-dev make zlib1g-dev
 RUN echo "\n"|pecl install pecl_http-1.7.6
 RUN /usr/local/bin/docker-php-ext-enable http
 
+#Install PHP Intl
+RUN apt-get update && apt-get install -y libicu-dev
+RUN pecl install intl
+RUN /usr/local/bin/docker-php-ext-enable intl
+
 # paquet libpng-dev for php extention gd
 RUN apt-get update && apt-get install -y \
         libpng-dev \
