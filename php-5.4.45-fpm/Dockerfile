@@ -49,7 +49,6 @@ RUN buildDeps=" \
 		--disable-cgi \
 		--enable-mysqlnd \
 		--enable-mbstring \
-		--enable-bcmath \
 		--with-curl \
 		--with-openssl \
 		--with-readline \
@@ -104,13 +103,15 @@ RUN /usr/local/bin/docker-php-ext-install \
         gd \
         mysql \
         zip \
-        pdo_mysql
+        pdo_mysql \
+        bcmath
 RUN /usr/local/bin/docker-php-ext-enable \
         gd \
         mysql \
         zip \
         pdo_mysql \
-        http
+        http \
+        bcmath
 RUN apt-get install -qq -u -y \
         mysql-server \
         mysql-client
