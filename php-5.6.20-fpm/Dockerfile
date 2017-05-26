@@ -77,6 +77,8 @@ RUN set -xe \
 		libsqlite3-dev \
 		libssl-dev \
 		libxml2-dev \
+		libjpeg62-turbo-dev \
+		libpng-dev \
 	" \
 	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/* \
 	\
@@ -96,6 +98,8 @@ RUN set -xe \
 		--enable-mysqlnd \
 		\
 		--with-curl \
+		--with-gd \
+		--with-jpeg-dir="/usr/include" \
 		--with-libedit \
 		--with-openssl \
 		--with-zlib \
@@ -175,12 +179,10 @@ RUN apt-get update && apt-get install -y \
         php5-xsl \
         libapache2-mod-fastcgi
 RUN /usr/local/bin/docker-php-ext-install \
-        gd \
         mysql \
         zip \
         pdo_mysql
 RUN /usr/local/bin/docker-php-ext-enable \
-        gd \
         mysql \
         zip \
         pdo_mysql
