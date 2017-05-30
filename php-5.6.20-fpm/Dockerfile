@@ -158,6 +158,11 @@ RUN set -ex \
 RUN a2enmod proxy
 RUN a2enmod proxy_fcgi
 
+#Install PHP Intl
+RUN apt-get update && apt-get install -y libicu-dev
+RUN pecl install intl
+RUN /usr/local/bin/docker-php-ext-enable intl
+
 # paquet libpng-dev for php extention gd
 RUN apt-get update && apt-get install -y \
         wget \
