@@ -163,6 +163,10 @@ RUN apt-get update && apt-get install -y libicu-dev
 RUN pecl install intl
 RUN /usr/local/bin/docker-php-ext-enable intl
 
+#Install PHP Bz2
+RUN apt-get update && apt-get install -y libbz2-dev
+RUN /usr/local/bin/docker-php-ext-install bz2
+
 # paquet libpng-dev for php extention gd
 RUN apt-get update && apt-get install -y \
         wget \
