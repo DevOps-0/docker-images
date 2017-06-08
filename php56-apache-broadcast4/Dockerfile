@@ -6,9 +6,7 @@ RUN wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add -
 RUN apt-get -qq update && apt-get install logstash-forwarder
 RUN mkdir -p /etc/pki/tls/certs
 COPY files/logstash-forwarder.crt /etc/pki/tls/certs/logstash-forwarder.crt
-COPY files/logstash-forwarder.conf /etc/logstash-forwarder.conf
 RUN chown profideo:profideo /etc
-RUN service logstash-forwarder start
 
 # Node
 RUN apt-get update && apt-get install -y curl python-software-properties
