@@ -183,11 +183,6 @@ RUN set -ex \
 RUN a2enmod proxy
 RUN a2enmod proxy_fcgi
 
-#Install PHP Intl
-RUN apt-get update && apt-get install -y libicu-dev
-RUN pecl install intl
-RUN /usr/local/bin/docker-php-ext-enable intl
-
 #Install PHP Bz2
 RUN apt-get update && apt-get install -y libbz2-dev
 RUN /usr/local/bin/docker-php-ext-install bz2
@@ -206,7 +201,6 @@ RUN apt-get update && apt-get install -y \
         php5-curl \
         php5-dev \
         php5-gd \
-        php5-intl \
         php5-ldap \
         php5-mcrypt \
         php5-mysql \
