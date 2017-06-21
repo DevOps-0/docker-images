@@ -180,7 +180,7 @@ RUN set -ex \
 	} | tee php-fpm.d/zz-docker.conf
 
 ##<overload by profideo>##
-RUN apt-get install -qq -u -y \
+RUN apt-get update && apt-get install -qq -u -y \
         mysql-server \
         mysql-client
 RUN /etc/init.d/mysql restart
