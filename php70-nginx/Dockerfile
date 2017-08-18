@@ -6,11 +6,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql
 
-# Install nodejs and npm
-RUN apt-get update && apt-get install -y \
-   nodejs \
-   npm
-RUN ln -s /usr/bin/nodejs /usr/bin/node
+# Install nodejs
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get update && apt-get install -y nodejs
 
 # Nginx configuration
 COPY files/nginx.conf /etc/nginx/nginx.conf
