@@ -184,6 +184,7 @@ RUN set -ex \
 
 ##<overload by profideo>##
 RUN apt-get update && apt-get install -qq -u -y \
+        libapache2-mod-fastcgi \
         mysql-server \
         mysql-client
 RUN /etc/init.d/mysql restart

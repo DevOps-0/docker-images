@@ -10,9 +10,6 @@ RUN docker-php-ext-install pdo pdo_mysql
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && apt-get install -y nodejs
 
-# Nginx configuration
-COPY files/nginx.conf /etc/nginx/nginx.conf
-
 # Supervisor
 COPY files/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD ["/usr/bin/supervisord"]
