@@ -1,4 +1,4 @@
-FROM profideo/nginx-1.13.4
+FROM profideo/apache-2.4.10
 # COPY FROM https://github.com/docker-library/php/blob/master/7.1/fpm/Dockerfile
 
 # persistent / runtime deps
