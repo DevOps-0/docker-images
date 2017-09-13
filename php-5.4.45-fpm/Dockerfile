@@ -104,13 +104,14 @@ RUN apt-get update && apt-get install -y \
         php5-xsl \
         libapache2-mod-fastcgi
 RUN /usr/local/bin/docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN /usr/local/bin/docker-php-ext-install -j$(nproc) gd
 RUN /usr/local/bin/docker-php-ext-install \
-        -j$(nproc) gd \
         mysql \
         zip \
         pdo_mysql \
         bcmath
 RUN /usr/local/bin/docker-php-ext-enable \
+        -j$(nproc) \
         gd \
         mysql \
         zip \
