@@ -83,6 +83,10 @@ RUN /usr/local/bin/docker-php-ext-enable intl
 # paquet libpng-dev for php extention gd
 RUN apt-get update && apt-get install -y \
         libpng-dev \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libmcrypt-dev \
+        libpng12-dev \
 		php-http \
         php-http-request \
         php-net-socket \
@@ -99,8 +103,9 @@ RUN apt-get update && apt-get install -y \
         php5-mysql \
         php5-xsl \
         libapache2-mod-fastcgi
+RUN /usr/local/bin/docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 RUN /usr/local/bin/docker-php-ext-install \
-        gd \
+        -j$(nproc) gd \
         mysql \
         zip \
         pdo_mysql \
