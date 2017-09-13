@@ -102,16 +102,16 @@ RUN apt-get update && apt-get install -y \
         php5-mcrypt \
         php5-mysql \
         php5-xsl \
-        libapache2-mod-fastcgi
-RUN /usr/local/bin/docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
-RUN /usr/local/bin/docker-php-ext-install -j$(nproc) gd
+        libapache2-mod-fastcgi \
+	&& /usr/local/bin/docker-php-ext-install -j$(nproc) iconv mcrypt \
+	&& /usr/local/bin/docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+	&& /usr/local/bin/docker-php-ext-install -j$(nproc) gd
 RUN /usr/local/bin/docker-php-ext-install \
         mysql \
         zip \
         pdo_mysql \
         bcmath
 RUN /usr/local/bin/docker-php-ext-enable \
-        -j$(nproc) \
         gd \
         mysql \
         zip \
