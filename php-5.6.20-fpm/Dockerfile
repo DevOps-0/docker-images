@@ -190,7 +190,8 @@ RUN apt-get update && apt-get install -y \
 RUN /usr/local/bin/docker-php-ext-install \
         mysql \
         zip \
-        pdo_mysql
+        pdo_mysql \
+        calendar
 RUN /usr/local/bin/docker-php-ext-enable \
         mysql \
         zip \
