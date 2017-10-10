@@ -29,8 +29,9 @@ RUN apt-get install dnsutils -qq -u -y
 RUN apt-get install bzip2 -qq -u -y
 COPY files/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz /tmp/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 RUN tar -xJf /tmp/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz -C /tmp
-RUN mv /tmp/wkhtmltopdf /usr/local/bin/wkhtmltopdf
-RUN chmod +x /usr/local/bin/wkhtmltopdf
+RUN mv /tmp/wkhtmltox /usr/local/bin/wkhtmltox
+RUN chmod +x /usr/local/bin/wkhtmltox/bin/wkhtmltopdf
+RUN chmod +x /usr/local/bin/wkhtmltox/bin/wkhtmltoimage
 
 # Install poppler-utils (tool for extract pdf's content)
 RUN apt-get install poppler-utils -qq -u -y
