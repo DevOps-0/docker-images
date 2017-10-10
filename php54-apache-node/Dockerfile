@@ -27,8 +27,8 @@ RUN apt-get install dnsutils -qq -u -y
 
 # Install wkhtmltopdf
 RUN apt-get install bzip2 -qq -u -y
-COPY files/wkhtmltopdf-0.9.9-static-amd64.tar.bz2 /tmp/wkhtmltopdf-0.9.9-static-amd64.tar.bz2
-RUN tar xvjf /tmp/wkhtmltopdf-0.9.9-static-amd64.tar.bz2 -C /tmp
+COPY files/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz /tmp/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+RUN tar -xJf /tmp/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz -C /tmp
 RUN mv /tmp/wkhtmltopdf /usr/local/bin/wkhtmltopdf
 RUN chmod +x /usr/local/bin/wkhtmltopdf
 
