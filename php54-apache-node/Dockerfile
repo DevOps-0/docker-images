@@ -16,7 +16,7 @@ COPY files/php.ini /usr/local/etc/php/php.ini
 
 # Install imagemagick
 RUN apt-get update && apt-get install -y librsvg2-2 librsvg2-bin librsvg2-dbg
-RUN apt-get update && apt-get install -y imagemagick
+RUN apt-get update && apt-get install -y imagemagick graphviz
 COPY files/achillefy-regular_l-webfont.ttf /usr/share/fonts/achillefy-regular_l-webfont.ttf
 COPY files/type-achille.xml /etc/ImageMagick/type-achille.xml
 COPY files/type.xml /etc/ImageMagick/type.xml
