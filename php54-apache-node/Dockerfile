@@ -14,6 +14,9 @@ RUN npm install -g bower
 # PHP configuration
 COPY files/php.ini /usr/local/etc/php/php.ini
 
+# Install libxml2
+RUN apt-get update && apt-get install -y libxml2 libxml2-dev
+
 # Install imagemagick
 RUN apt-get update && apt-get install -y librsvg2-2 librsvg2-bin librsvg2-dbg
 RUN apt-get update && apt-get install -y imagemagick graphviz
