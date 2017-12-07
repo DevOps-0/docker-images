@@ -15,7 +15,10 @@ RUN npm install -g bower
 COPY files/php.ini /usr/local/etc/php/php.ini
 
 # Install libxml2
-RUN apt-get update && apt-get install -y libxml2 libxml2-dev
+RUN apt-get update && apt-get install -y \
+    libxml2 \
+    libxml2-dev \
+&& /usr/local/bin/docker-php-ext-install soap \
 
 # Install imagemagick
 RUN apt-get update && apt-get install -y librsvg2-2 librsvg2-bin librsvg2-dbg
