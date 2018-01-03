@@ -4,7 +4,8 @@ FROM profideo/php-7.0.10-fpm
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo pdo_mysql
+RUN apt-get update && apt-get install -y zlib1g-dev
+RUN docker-php-ext-install pdo pdo_mysql zip
 
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
