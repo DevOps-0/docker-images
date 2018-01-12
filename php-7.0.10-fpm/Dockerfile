@@ -130,10 +130,10 @@ RUN set -ex \
 	} | tee php-fpm.d/zz-docker.conf
 
 ##<overload by profideo>##
-RUN apt-get install -qq -u -y \
-        mysql-server \
-        mysql-client
-RUN /etc/init.d/mysql restart
+#RUN apt-get install -qq -u -y \
+#        mysql-server \
+#        mysql-client
+#RUN /etc/init.d/mysql restart
 ##</overload by profideo>##
 
 EXPOSE 9000
