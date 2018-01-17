@@ -1,15 +1,6 @@
 FROM profideo/nginx-1.13.4
 # COPY FROM https://github.com/docker-library/php/blob/master/7.2/stretch/fpm/Dockerfile
 
-# prevent Debian's PHP packages from being installed
-# https://github.com/docker-library/php/pull/542
-RUN set -eux; \
-	{ \
-		echo 'Package: php*'; \
-		echo 'Pin: release *'; \
-		echo 'Pin-Priority: -1'; \
-	} > /etc/apt/preferences.d/no-debian-php
-
 # persistent / runtime deps
 ENV PHPIZE_DEPS \
 		autoconf \
