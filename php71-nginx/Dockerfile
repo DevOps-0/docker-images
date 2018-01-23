@@ -10,6 +10,8 @@ RUN docker-php-ext-install pdo pdo_mysql zip
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update && apt-get install -y nodejs
+# @see http://symfony.com/doc/current/frontend/encore/installation.html
+RUN npm install -g @symfony/webpack-encore --save-dev
 
 # Nginx configuration
 COPY files/nginx.conf /etc/nginx/nginx.conf
