@@ -9,7 +9,6 @@ RUN docker-php-ext-install pdo pdo_mysql zip sockets
 
 # Install ClamAV
 RUN apt-get update && apt-get install -y clamav clamav-freshclam clamav-daemon
-RUN freshclam
 
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
