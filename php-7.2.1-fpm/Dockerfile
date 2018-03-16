@@ -25,6 +25,7 @@ RUN apt-get update && apt-get install -y \
 		$PHPIZE_DEPS \
 		ca-certificates \
 		curl \
+		libargon2-0 \
 		xz-utils \
 	--no-install-recommends && rm -r /var/lib/apt/lists/*
 
