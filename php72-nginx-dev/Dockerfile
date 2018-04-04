@@ -1,4 +1,4 @@
-FROM profideo/php72-nginx
+FROM profideo/php72-nginx:27822-improve-jenkins
 
 RUN apt-get update && apt-get install -y unzip wget xvfb
 
