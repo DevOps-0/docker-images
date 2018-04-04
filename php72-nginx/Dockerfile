@@ -5,7 +5,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Install PHP extensions
 RUN apt-get update && apt-get install -y zlib1g-dev
-RUN docker-php-ext-install pdo pdo_mysql zip
+RUN docker-php-ext-install pdo pdo_mysql zip sockets
+
+# Install ClamAV
+RUN apt-get update && apt-get install -y clamav clamav-freshclam clamav-daemon
 
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
