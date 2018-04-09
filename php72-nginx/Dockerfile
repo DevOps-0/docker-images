@@ -1,4 +1,4 @@
-FROM profideo/php-7.2.1-fpm
+FROM profideo/php-7.2.4-fpm
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
