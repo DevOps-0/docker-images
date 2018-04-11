@@ -48,6 +48,9 @@ RUN apt-get install -qq -y memcached php5-memcache
 RUN pecl install mongo
 RUN /usr/local/bin/docker-php-ext-enable mongo
 
+# Install for import EXCEL
+RUN pear install OLE-1.0.0RC3
+
 # Supervisor
 COPY files/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD ["/usr/bin/supervisord"]
