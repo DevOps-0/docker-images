@@ -1,8 +1,13 @@
-FROM profideo/php-7.2.1-fpm
+FROM profideo/php-7.2.4-fpm
 
 # Install PHP extensions
-RUN apt-get update && apt-get install -y wget zlib1g-dev
-RUN docker-php-ext-install pdo pdo_mysql zip
+RUN apt-get update && apt-get install -y \
+        libbz2-dev \
+        libicu-dev \
+        wget \
+        zlib1g-dev \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install bz2 intl pdo pdo_mysql zip
 
 # Configure logstash-forwarder
 RUN echo 'deb http://packages.elastic.co/logstashforwarder/debian stable main' | tee /etc/apt/sources.list.d/logstashforwarder.list
