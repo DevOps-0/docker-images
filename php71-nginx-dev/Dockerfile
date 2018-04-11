@@ -1,6 +1,6 @@
 FROM profideo/php71-nginx
 
-RUN apt-get update && apt-get install -y unzip wget xvfb
+RUN apt-get update && apt-get install -y unzip wget
 
 RUN docker-php-ext-install pcntl
 
