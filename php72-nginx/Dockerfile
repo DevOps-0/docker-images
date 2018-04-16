@@ -10,6 +10,9 @@ RUN docker-php-ext-enable opcache
 RUN apt-get update && apt-get install -y zlib1g-dev
 RUN docker-php-ext-install pdo pdo_mysql zip sockets
 
+# Configure PHP extensions
+COPY files/php/ext/opcache.ini /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
+
 # Install ClamAV
 RUN apt-get update && apt-get install -y clamav clamav-freshclam clamav-daemon
 
