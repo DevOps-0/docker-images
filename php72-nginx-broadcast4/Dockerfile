@@ -7,7 +7,10 @@ RUN apt-get update && apt-get install -y \
         wget \
         zlib1g-dev \
     && docker-php-ext-configure intl \
-    && docker-php-ext-install bz2 intl pdo pdo_mysql zip
+    && docker-php-ext-configure opcache --enable-opcache \
+    && docker-php-ext-install bz2 intl opcache pdo pdo_mysql zip
+
+COPY files/opcache.ini $PHP_INI_DIR/conf.d/
 
 # Configure logstash-forwarder
 RUN echo 'deb http://packages.elastic.co/logstashforwarder/debian stable main' | tee /etc/apt/sources.list.d/logstashforwarder.list
