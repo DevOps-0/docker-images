@@ -1,5 +1,8 @@
 FROM profideo/php72-nginx-broadcast4:broadcast4-php72
 
+RUN usermod -a -G www-data profideo
+RUN mkdir /home/profideo/.opcache && chown -R profideo:profideo /home/profideo/.opcache && setfacl -R -m u:www-data:rwX -m u:profideo:rwX /home/profideo/.opcache && setfacl -dR -m u:www-data:rwX -m u:profideo:rwX /home/profideo/.opcache
+
 RUN apt-get update && apt-get install -y unzip
 
 RUN docker-php-ext-install pcntl

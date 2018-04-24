@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
         wget \
         zlib1g-dev \
     && docker-php-ext-configure intl \
-    && docker-php-ext-configure opcache --enable-opcache \
+    && docker-php-ext-configure opcache --enable-opcache --enable-opcache-file \
     && docker-php-ext-install bz2 intl opcache pdo pdo_mysql zip
 
 COPY files/opcache.ini $PHP_INI_DIR/conf.d/
