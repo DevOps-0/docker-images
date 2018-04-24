@@ -3,15 +3,9 @@ FROM profideo/php-7.2.4-fpm
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Enable PHP extensions
-RUN docker-php-ext-enable opcache
-
 # Install PHP extensions
 RUN apt-get update && apt-get install -y zlib1g-dev
 RUN docker-php-ext-install pdo pdo_mysql zip sockets
-
-# Configure PHP extensions
-COPY files/php/ext/opcache.ini /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
 
 # Install ClamAV
 RUN apt-get update && apt-get install -y clamav clamav-freshclam clamav-daemon
