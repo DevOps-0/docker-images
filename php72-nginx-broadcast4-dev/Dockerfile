@@ -3,7 +3,6 @@ FROM profideo/php72-nginx-broadcast4:broadcast4-php72
 RUN apt-get update && apt-get install -y unzip
 
 RUN docker-php-ext-install pcntl
-RUN pecl install xdebug && docker-php-ext-enable xdebug
 COPY files/opcache.ini $PHP_INI_DIR/conf.d/
 
 RUN echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list
