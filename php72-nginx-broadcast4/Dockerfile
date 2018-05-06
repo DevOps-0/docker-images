@@ -1,4 +1,4 @@
-FROM profideo/php-7.2.4-fpm
+FROM profideo/php-7.2-fpm
 
 # Install PHP extensions
 RUN apt-get update && apt-get install -y \
@@ -10,7 +10,10 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure opcache --enable-opcache --enable-opcache-file \
     && docker-php-ext-install bz2 intl opcache pdo pdo_mysql zip
 
+# PHP configuration
+COPY files/www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY files/opcache.ini $PHP_INI_DIR/conf.d/
+RUN mkdir /home/profideo/.opcache && chown -R profideo:profideo /home/profideo/.opcache
 
 # Configure logstash-forwarder
 RUN echo 'deb http://packages.elastic.co/logstashforwarder/debian stable main' | tee /etc/apt/sources.list.d/logstashforwarder.list
