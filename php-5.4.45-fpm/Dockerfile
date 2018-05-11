@@ -105,6 +105,7 @@ RUN apt-get update && apt-get install -y \
         libapache2-mod-fastcgi \
 	&& /usr/local/bin/docker-php-ext-install iconv mcrypt \
 	&& /usr/local/bin/docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+	&& docker-php-ext-configure opcache --enable-opcache --enable-opcache-file \
 	&& /usr/local/bin/docker-php-ext-install gd
 RUN /usr/local/bin/docker-php-ext-install \
         mysql \
@@ -117,7 +118,12 @@ RUN /usr/local/bin/docker-php-ext-enable \
         zip \
         pdo_mysql \
         http \
-        bcmath
+        bcmath \
+        opcache
+
+COPY files/opcache.ini $PHP_INI_DIR/conf.d/
+RUN mkdir /home/profideo/.opcache && chown -R profideo:profideo /home/profideo/.opcache
+
 #RUN apt-get install -qq -u -y \
 #        mysql-server \
 #        mysql-client

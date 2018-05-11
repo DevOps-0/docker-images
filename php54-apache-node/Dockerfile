@@ -16,7 +16,7 @@ COPY files/php.ini /usr/local/etc/php/php.ini
 
 # Install libxml2
 RUN apt-get update && apt-get install -y libxml2 libxml2-dev
-RUN /usr/local/bin/docker-php-ext-install soap
+RUN docker-php-ext-install soap
 
 # Install imagemagick
 RUN apt-get update && apt-get install -y librsvg2-2 librsvg2-bin librsvg2-dbg
@@ -46,7 +46,11 @@ RUN apt-get install -qq -y memcached php5-memcache
 
 # Install and enable mongo
 RUN pecl install mongo
-RUN /usr/local/bin/docker-php-ext-enable mongo
+RUN docker-php-ext-enable mongo
+
+RUN pecl install zendopcache-7.0.5
+RUN docker-php-ext-enable opcache
+COPY files/opcache.ini $PHP_INI_DIR/conf.d/
 
 # Install for import EXCEL
 RUN pear install OLE-1.0.0RC3
