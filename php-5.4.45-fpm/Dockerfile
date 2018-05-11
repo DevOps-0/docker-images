@@ -80,6 +80,9 @@ RUN apt-get update && apt-get install -y libicu-dev
 RUN pecl install intl
 RUN /usr/local/bin/docker-php-ext-enable intl
 
+RUN pecl install zendopcache-7.0.5
+RUN docker-php-ext-enable opcache
+
 # paquet libpng-dev for php extention gd
 RUN apt-get update && apt-get install -y \
         libpng-dev \
