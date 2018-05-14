@@ -16,9 +16,9 @@ RUN apt-get update && apt-get install oracle-java8-installer -y && apt-get clean
 RUN echo "JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> /etc/environment
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
-ADD https://chromedriver.storage.googleapis.com/2.36/chromedriver_linux64.zip /tmp/
+ADD https://chromedriver.storage.googleapis.com/2.38/chromedriver_linux64.zip /tmp/
 RUN unzip -d /opt/ /tmp/chromedriver_linux64.zip
 RUN rm /tmp/chromedriver_linux64.zip
 
-ADD https://selenium-release.storage.googleapis.com/3.11/selenium-server-standalone-3.11.0.jar /opt/
-RUN chmod o+r /opt/selenium-server-standalone-3.11.0.jar
+ADD https://selenium-release.storage.googleapis.com/3.12/selenium-server-standalone-3.12.0.jar /opt/
+RUN chmod o+r /opt/selenium-server-standalone-3.12.0.jar
