@@ -13,8 +13,6 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | te
 RUN echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
 RUN apt-get update && apt-get install oracle-java8-installer -y && apt-get clean
-RUN echo "JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> /etc/environment
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 ADD https://chromedriver.storage.googleapis.com/2.38/chromedriver_linux64.zip /tmp/
 RUN unzip -d /opt/ /tmp/chromedriver_linux64.zip
