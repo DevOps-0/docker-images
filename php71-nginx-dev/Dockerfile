@@ -18,5 +18,5 @@ ADD https://chromedriver.storage.googleapis.com/2.38/chromedriver_linux64.zip /t
 RUN unzip -d /opt/ /tmp/chromedriver_linux64.zip
 RUN rm /tmp/chromedriver_linux64.zip
 
-ADD https://selenium-release.storage.googleapis.com/3.12/selenium-server-standalone-3.12.0.jar /opt/
-RUN chmod o+r /opt/selenium-server-standalone-3.12.0.jar
+ADD https://selenium-release.storage.googleapis.com/3.12/selenium-server-standalone-3.12.0.jar /opt/selenium-server-standalone.jar
+RUN chmod o+r /opt/selenium-server-standalone.jar
