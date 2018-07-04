@@ -1,4 +1,4 @@
-FROM profideo/php72-nginx
+FROM profideo/php72-nginx:upgrade-php-7.2-fpm
 
 RUN apt-get update && apt-get install -y unzip wget
 
