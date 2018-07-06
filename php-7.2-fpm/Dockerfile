@@ -1,4 +1,4 @@
-FROM profideo/nginx-1.13.4
+FROM profideo/apache-2.4.10
 
 # prevent Debian's PHP packages from being installed
 # https://github.com/docker-library/php/pull/542
@@ -220,6 +220,11 @@ RUN set -ex \
 		echo '[www]'; \
 		echo 'listen = 9000'; \
 	} | tee php-fpm.d/zz-docker.conf
+
+##<overload by profideo>##
+RUN a2enmod proxy
+RUN a2enmod proxy_fcgi
+##</overload by profideo>##
 
 EXPOSE 9000
 CMD ["php-fpm"]
