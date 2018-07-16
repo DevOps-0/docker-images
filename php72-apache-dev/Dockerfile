@@ -7,6 +7,7 @@ RUN docker-php-ext-install pcntl
 RUN apt-get update && apt-get install -y fonts-liberation libappindicator3-1 libnspr4 libnss3 libx11-xcb1 libxss1 libxtst6 xdg-utils lsb-release
 COPY files/google-chrome-stable_67_amd64.deb /tmp/google-chrome-stable_67_amd64.deb
 RUN dpkg -i /tmp/google-chrome-stable_67_amd64.deb
+RUN rm /tmp/google-chrome-stable_67_amd64.deb
 
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list
