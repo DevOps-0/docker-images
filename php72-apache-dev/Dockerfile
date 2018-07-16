@@ -4,9 +4,9 @@ RUN apt-get update && apt-get install -y unzip wget
 
 RUN docker-php-ext-install pcntl
 
-RUN echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN apt-get update && apt-get install -y google-chrome-stable
+RUN apt-get update && apt-get install -y fonts-liberation libappindicator3-1 libnspr4 libnss3 libx11-xcb1 libxss1 libxtst6 xdg-utils lsb-release
+COPY files/google-chrome-stable_67_amd64.deb /tmp/google-chrome-stable_67_amd64.deb
+RUN dpkg -i /tmp/google-chrome-stable_67_amd64.deb
 
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list
