@@ -14,9 +14,9 @@ RUN echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
 RUN apt-get update && apt-get install oracle-java8-installer -y && apt-get clean
 
-ADD https://chromedriver.storage.googleapis.com/2.38/chromedriver_linux64.zip /tmp/
+ADD https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip /tmp/
 RUN unzip -d /opt/ /tmp/chromedriver_linux64.zip
 RUN rm /tmp/chromedriver_linux64.zip
 
-ADD https://selenium-release.storage.googleapis.com/3.12/selenium-server-standalone-3.12.0.jar /opt/selenium-server-standalone.jar
+ADD https://selenium-release.storage.googleapis.com/3.13/selenium-server-standalone-3.13.0.jar /opt/selenium-server-standalone.jar
 RUN chmod o+r /opt/selenium-server-standalone.jar
