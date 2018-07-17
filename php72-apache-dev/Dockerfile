@@ -4,9 +4,10 @@ RUN apt-get update && apt-get install -y unzip wget
 
 RUN docker-php-ext-install pcntl
 
-RUN echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN apt-get update && apt-get install -y google-chrome-stable
+RUN apt-get update && apt-get install -y fonts-liberation libappindicator3-1 libnspr4 libnss3 libx11-xcb1 libxss1 libxtst6 xdg-utils lsb-release
+COPY files/google-chrome-stable_67_amd64.deb /tmp/google-chrome-stable_67_amd64.deb
+RUN dpkg -i /tmp/google-chrome-stable_67_amd64.deb
+RUN rm /tmp/google-chrome-stable_67_amd64.deb
 
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list
@@ -14,9 +15,9 @@ RUN echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
 RUN apt-get update && apt-get install oracle-java8-installer -y && apt-get clean
 
-ADD https://chromedriver.storage.googleapis.com/2.38/chromedriver_linux64.zip /tmp/
+ADD https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip /tmp/
 RUN unzip -d /opt/ /tmp/chromedriver_linux64.zip
 RUN rm /tmp/chromedriver_linux64.zip
 
-ADD https://selenium-release.storage.googleapis.com/3.12/selenium-server-standalone-3.12.0.jar /opt/selenium-server-standalone.jar
+ADD https://selenium-release.storage.googleapis.com/3.13/selenium-server-standalone-3.13.0.jar /opt/selenium-server-standalone.jar
 RUN chmod o+r /opt/selenium-server-standalone.jar
