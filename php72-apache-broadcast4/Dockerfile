@@ -32,9 +32,6 @@ RUN chown -R profideo /home/profideo/.npm
 RUN npm install -g less
 RUN npm install -g bower
 
-# Nginx configuration
-COPY files/nginx.conf /etc/nginx/nginx.conf
-
 # Supervisor
 COPY files/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD ["/usr/bin/supervisord"]
