@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
 
 # PHP configuration
 COPY files/www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY files/php.ini $PHP_INI_DIR/php.ini
 COPY files/opcache.ini $PHP_INI_DIR/conf.d/
 RUN mkdir /home/profideo/.opcache && chown -R profideo:profideo /home/profideo/.opcache
 
