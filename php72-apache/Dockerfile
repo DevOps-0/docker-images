@@ -1,4 +1,4 @@
-FROM profideo/php-7.3-fpm:add-php73-image
+FROM profideo/php-7.3-fpm
 
 # Install apt-transport-https
 RUN apt-get update && apt-get install -y apt-transport-https
