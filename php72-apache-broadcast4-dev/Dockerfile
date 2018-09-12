@@ -1,4 +1,4 @@
-FROM profideo/php72-apache-broadcast4:broadcast4-php72
+FROM profideo/php72-apache-broadcast4
 
 RUN apt-get update && apt-get install -y unzip
 
