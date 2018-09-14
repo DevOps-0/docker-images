@@ -1,4 +1,4 @@
-FROM profideo/php73-apache:add-php73-image
+FROM profideo/php73-apache
 
 RUN apt-get update && apt-get install -y unzip wget
 
