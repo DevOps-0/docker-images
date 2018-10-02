@@ -1,4 +1,4 @@
-FROM profideo/php72-apache
+FROM profideo/php72-apache:upgrade-php-7.2-fpm
 
 RUN apt-get update && apt-get install -y unzip wget
 
