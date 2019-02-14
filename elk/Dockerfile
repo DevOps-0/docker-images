@@ -4,7 +4,7 @@ FROM profideo/debian-jessie
 
 MAINTAINER Alban Duval <aduval@profideo.com>
 
-#RUN sed -i 's/jessie/stretch/g' /etc/apt/*
+# Migrate from debian Jessie to debian Stretch
 RUN find /etc/apt/ -type f -exec sed -i 's/jessie/stretch/g' {} +
 
 # Change debian version
