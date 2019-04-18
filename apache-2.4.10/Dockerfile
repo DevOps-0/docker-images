@@ -9,7 +9,7 @@ ENV APACHE_LOG_DIR /var/log/apache2
 RUN echo 'deb http://ftp.fr.debian.org/debian/ jessie non-free' >> /etc/apt/sources.list
 RUN echo 'deb-src http://ftp.fr.debian.org/debian/ jessie non-free' >> /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get install -y apache2=2.4.10-10+deb8u7
+RUN apt-get install -y apache2=2.4.10-10+deb8u14
 RUN a2enmod rewrite
 RUN echo "umask 002" >> /etc/apache2/envvars
 
