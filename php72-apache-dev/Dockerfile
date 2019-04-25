@@ -10,7 +10,9 @@ RUN dpkg -i /tmp/google-chrome-stable_72_amd64.deb
 RUN rm /tmp/google-chrome-stable_72_amd64.deb
 
 COPY files/install-java.sh /tmp/install-java.sh
-COPY files/jdk-8u211-linux-x64.tar.gz /tmp/jdk-8u211-linux-x64.tar.gz
+# JDK is stored in static.profideo.com because it cannot be downloaded from official repository without authentication and
+# it cannot be versionned because its size is too large.
+RUN wget http://static.profideo.com/it/jdk-8u211-linux-x64.tar.gz -O /tmp/jdk-8u211-linux-x64.tar.gz
 RUN chmod u+x /tmp/install-java.sh
 RUN yes | /tmp/install-java.sh -f /tmp/jdk-8u211-linux-x64.tar.gz
 RUN rm /tmp/install-java.sh
