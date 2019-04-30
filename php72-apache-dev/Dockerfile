@@ -1,4 +1,4 @@
-FROM profideo/php72-apache
+FROM profideo/php72-apache:33666-add-pricing-api
 
 RUN apt-get update && apt-get install -y unzip wget
 
