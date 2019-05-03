@@ -14,8 +14,9 @@ RUN docker-php-ext-install pdo pdo_mysql zip sockets
 RUN apt-get update && apt-get install -y clamav clamav-freshclam clamav-daemon
 
 # Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-RUN apt-get update && apt-get install -y nodejs npm nodejs-legacy
+RUN apt-get install -y software-properties-common
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
+RUN apt-get install -y nodejs
 
 # Supervisor
 COPY files/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
