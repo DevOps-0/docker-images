@@ -9,11 +9,14 @@ COPY files/google-chrome-stable_68_amd64.deb /tmp/google-chrome-stable_68_amd64.
 RUN dpkg -i /tmp/google-chrome-stable_68_amd64.deb
 RUN rm /tmp/google-chrome-stable_68_amd64.deb
 
-RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list
-RUN echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
-RUN apt-get update && apt-get install oracle-java8-installer -y && apt-get clean
+COPY files/install-java.sh /tmp/install-java.sh
+# JDK is stored in static.profideo.com because it cannot be downloaded from official repository without authentication and
+# it cannot be versionned because its size is too large.
+RUN wget http://static.profideo.com/it/jdk-8u211-linux-x64.tar.gz -O /tmp/jdk-8u211-linux-x64.tar.gz
+RUN chmod u+x /tmp/install-java.sh
+RUN yes | /tmp/install-java.sh -f /tmp/jdk-8u211-linux-x64.tar.gz
+RUN rm /tmp/install-java.sh
+RUN rm /tmp/jdk-8u211-linux-x64.tar.gz
 
 ADD https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip /tmp/
 RUN unzip -d /opt/ /tmp/chromedriver_linux64.zip
