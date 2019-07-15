@@ -18,7 +18,7 @@ RUN yes | /tmp/install-java.sh -f /tmp/jdk-8u211-linux-x64.tar.gz
 RUN rm /tmp/install-java.sh
 RUN rm /tmp/jdk-8u211-linux-x64.tar.gz
 
-ADD https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip /tmp/
+ADD https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip /tmp/
 RUN unzip -d /opt/ /tmp/chromedriver_linux64.zip
 RUN rm /tmp/chromedriver_linux64.zip
 
