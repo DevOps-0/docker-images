@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install -y apt-transport-https
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install PHP extensions
-RUN apt-get update && apt-get install -y libzip-dev
-RUN docker-php-ext-install pdo pdo_mysql zip sockets
+RUN apt-get update && apt-get install -y libzip-dev libpng-dev
+RUN docker-php-ext-install pdo pdo_mysql zip sockets gd
 
 # Install ClamAV
 RUN apt-get update && apt-get install -y clamav clamav-freshclam clamav-daemon

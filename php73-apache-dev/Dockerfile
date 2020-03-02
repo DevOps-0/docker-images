@@ -1,8 +1,8 @@
 FROM profideo/php73-apache
 
-RUN apt-get update && apt-get install -y unzip wget libpng-dev
+RUN apt-get update && apt-get install -y unzip wget
 
-RUN docker-php-ext-install pcntl gd
+RUN docker-php-ext-install pcntl
 
 RUN apt-get update && apt-get install -y fonts-liberation libappindicator3-1 libnspr4 libnss3 libx11-xcb1 libxss1 libxtst6 xdg-utils lsb-release
 COPY files/google-chrome-stable_75.0.3770.100_amd64.deb /tmp/google-chrome-stable_75.0.3770.100_amd64.deb
